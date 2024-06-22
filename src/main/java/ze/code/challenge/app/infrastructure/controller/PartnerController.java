@@ -1,5 +1,6 @@
 package ze.code.challenge.app.infrastructure.controller;
 
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -26,7 +27,7 @@ public class PartnerController {
     }
 
     @PostMapping
-    public ResponseEntity<?> post(@RequestBody PartnerRequestDTO partnerRequestDTO) {
+    public ResponseEntity<?> post(@RequestBody @Valid PartnerRequestDTO partnerRequestDTO) {
         var response = createPartner.execute(partnerRequestDTO);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
