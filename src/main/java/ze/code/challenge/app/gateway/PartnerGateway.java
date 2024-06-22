@@ -27,4 +27,10 @@ public class PartnerGateway {
     public Optional<Partner> findByDocument(String document) {
         return this.repository.findByDocument(document);
     }
+
+    public Optional<Partner> findById(String id) {
+        return this.repository.findById(id);
+    }
+
+
 }

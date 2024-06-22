@@ -7,7 +7,7 @@ import ze.code.challenge.app.entity.Partner;
 import java.util.Optional;
 
 @Repository
-public interface PartnerRepository extends MongoRepository<Partner, Long> {
+public interface PartnerRepository extends MongoRepository<Partner, String> {
 
     Optional<Partner> findByDocument(String document);
 

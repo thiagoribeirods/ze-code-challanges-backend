@@ -17,7 +17,7 @@ import ze.code.challenge.app.infrastructure.controller.dto.PartnerRequestDTO;
 public class Partner {
 
     @Id
-    private ObjectId id;
+    private String id;
 
     private String tradingName;
 
