@@ -7,10 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ze.code.challenge.app.entity.Partner;
 import ze.code.challenge.app.infrastructure.controller.dto.PartnerRequestDTO;
-import ze.code.challenge.app.usecase.CreatePartner;
-import ze.code.challenge.app.usecase.GetPartnerByDocument;
-import ze.code.challenge.app.usecase.GetPartnerById;
-import ze.code.challenge.app.usecase.GetPartners;
+import ze.code.challenge.app.usecase.*;
 
 import java.util.Optional;
 
@@ -22,12 +19,14 @@ public class PartnerController {
     private final GetPartners getPartners;
     private final GetPartnerByDocument getPartnerByDocument;
     private final GetPartnerById getPartnerById;
+    private final SearchPartnerByCoordinates searchPartnerByCoordinates;
 
-    public PartnerController(CreatePartner createPartner, GetPartners getPartners, GetPartnerByDocument getPartnerByDocument, GetPartnerById getPartnerById) {
+    public PartnerController(CreatePartner createPartner, GetPartners getPartners, GetPartnerByDocument getPartnerByDocument, GetPartnerById getPartnerById, SearchPartnerByCoordinates searchPartnerByCoordinates) {
         this.createPartner = createPartner;
         this.getPartners = getPartners;
         this.getPartnerByDocument = getPartnerByDocument;
         this.getPartnerById = getPartnerById;
+        this.searchPartnerByCoordinates = searchPartnerByCoordinates;
     }
 
     @GetMapping
@@ -44,6 +43,11 @@ public class PartnerController {
         }
 
         return ResponseEntity.notFound().build();
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity<?> getCoverageArea(@RequestParam double longitude, @RequestParam double latitude) {
+        return ResponseEntity.ok(searchPartnerByCoordinates.execute(longitude, latitude));
     }
 
     @PostMapping
