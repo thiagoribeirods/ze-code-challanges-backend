@@ -1,6 +1,5 @@
 package ze.code.challenge.app.gateway;
 
-import com.mongodb.client.model.geojson.Point;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.geo.GeoJsonPoint;
 import org.springframework.data.mongodb.core.query.Criteria;
