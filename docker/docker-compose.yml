@@ -5,8 +5,8 @@ services:
     ports:
       - "27017:27017"
     environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: MongoDBPassword2024
+      MONGO_INITDB_ROOT_USERNAME: zecodeuser
+      MONGO_INITDB_ROOT_PASSWORD: zecodepassword
     volumes:
       - mongo-data:/data/db
 
