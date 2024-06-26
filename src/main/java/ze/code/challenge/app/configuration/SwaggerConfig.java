@@ -12,9 +12,12 @@ public class SwaggerConfig {
     @Bean
     OpenAPI api() {
         Info info = new Info()
-                .title("Ze Code Challenges Documentation")
+                .title("Ze Code Challenge Documentation")
                 .version("1.0.0")
-                .description("This is an implementation from https://github.com/ab-inbev-ze-company/ze-code-challenges/blob/master/backend.md");
+                .description("This is an implementation from " +
+                        "<a href='https://github.com/ab-inbev-ze-company/ze-code-challenges/blob/master/backend.md' target='_blank'>" +
+                            "https://github.com/ab-inbev-ze-company/ze-code-challenges/blob/master/backend.md" +
+                        "</a>");
 
         return new OpenAPI().info(info);
     }
