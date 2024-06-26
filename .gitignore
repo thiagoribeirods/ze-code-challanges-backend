@@ -4,6 +4,7 @@
 #build
 .gradle
 build/
+bin/
 
 .gradle/
 .idea
