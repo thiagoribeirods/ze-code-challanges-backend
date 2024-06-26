@@ -1,7 +1,7 @@
 services:
-  mongodb:
+  mongodb-service:
     image: mongo:latest
-    container_name: mongodb-ze-code-challenge
+    container_name: mongodb
     ports:
       - "27017:27017"
     environment:
@@ -9,6 +9,17 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: zecodepassword
     volumes:
       - mongo-data:/data/db
+
+  ze-code-challenge-service:
+    container_name: ze-code-challenge-application
+    build: ../.
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mongodb-service
+    environment:
+      MONGODB_URI: mongodb://zecodeuser:zecodepassword@mongodb-service:27017/collection-ze-challenge?authSource=admin
+
 
 volumes:
   mongo-data:
